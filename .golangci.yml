@@ -155,3 +155,7 @@ issues:
       text: "got 'user_ids' want 'user_i_ds'"
       linters:
         - tagliatelle
+    - path: 'pkg/message/migrate_messages.go'
+      text: "got 'mentioned_user_ids' want 'mention_user_i_ds'"
+      linters:
+        - tagliatelle

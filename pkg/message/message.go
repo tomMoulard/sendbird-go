@@ -17,6 +17,10 @@ type Message interface {
 	// ListMessages retrieves a list of messages in a channel.
 	// See https://sendbird.com/docs/chat/platform-api/v3/message/messaging-basics/list-messages
 	ListMessages(ctx context.Context, channelType ChannelType, channelURL string, listMessagesRequest ListMessagesRequest) (*ListMessagesResponse, error)
+
+	// MigrateMessages migrates messages to a channel.
+	// See https://sendbird.com/docs/chat/platform-api/v3/message/migration/migrate-messages
+	MigrateMessages(ctx context.Context, channelURL string, migrateMessagesRequest MigrateMessagesRequest) error
 }
 
 type message struct {
