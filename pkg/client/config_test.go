@@ -93,7 +93,7 @@ func TestWithAPIToken(t *testing.T) {
 	client.SetDefault()
 
 	client = WithAPIToken("api-token")(client)
-	assert.Equal(t, "api-token", client.header.Get("api-token"))
+	assert.Equal(t, "api-token", client.header.Get("Api-Token"))
 	assert.Len(t, client.header, 2)
 }
 

@@ -8,7 +8,7 @@ linters:
     - exhaustruct  # Not relevant
     - testpackage  # Too strict
     - varnamelen  # Not relevant
-    - goerr113  # Too strict
+    - err113  # Too strict
     - lll  # Not relevant
 
     # deprecated linters
@@ -22,6 +22,8 @@ linters:
     - scopelint
     - structcheck
     - varcheck
+    - gomnd
+    - execinquery
 
 linters-settings:
   depguard:
