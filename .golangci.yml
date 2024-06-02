@@ -12,16 +12,6 @@ linters:
     - lll  # Not relevant
 
     # deprecated linters
-    - deadcode
-    - exhaustivestruct
-    - golint
-    - ifshort
-    - interfacer
-    - maligned
-    - nosnakecase
-    - scopelint
-    - structcheck
-    - varcheck
     - gomnd
     - execinquery
 

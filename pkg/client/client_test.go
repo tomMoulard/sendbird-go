@@ -108,7 +108,7 @@ func TestDo(t *testing.T) {
 				if test.expectedBody != "" {
 					defer r.Body.Close()
 					body, err := io.ReadAll(r.Body)
-					require.NoError(t, err)
+					assert.NoError(t, err)
 					assert.Equal(t, test.expectedBody, string(body))
 				}
 
@@ -121,7 +121,7 @@ func TestDo(t *testing.T) {
 
 				if test.responseBody != nil {
 					err := json.NewEncoder(w).Encode(test.responseBody)
-					require.NoError(t, err)
+					assert.NoError(t, err)
 				}
 			}))
 			defer s.Close()
