@@ -36,7 +36,7 @@ func NewClient(opts ...Option) Client {
 	return cfg
 }
 
-// do sends a request to the sendbird API.
+// do send a request to the sendbird API.
 func (c *client) do(ctx context.Context, method, path string, obj any, resp any) (any, error) {
 	logger := c.logger.With("method", method, "path", path)
 	logger.Debug("do")
@@ -72,8 +72,6 @@ func (c *client) do(ctx context.Context, method, path string, obj any, resp any)
 	logger = logger.With("status", r.StatusCode)
 
 	if r.StatusCode < 200 || r.StatusCode >= 300 {
-		logger.Error("request failed")
-
 		return nil, c.handleError(r.StatusCode, r.Body)
 	}
 
