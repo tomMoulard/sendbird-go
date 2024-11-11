@@ -56,7 +56,7 @@ type ListMessagesRequest struct {
 	// MessageType specifies a message type to retrieve. If not specified, all
 	// messages are retrieved.
 	// Optional.
-	MessageType MessageType
+	MessageType Type
 	// CustomTypes specifies a list of one or more custom message types to
 	// retrieve. The value set to this parameter can serve as a filter as
 	// follows:
@@ -123,7 +123,7 @@ type ListMessagesRequest struct {
 
 // ListMessagesResponse is the response to list messages.
 type ListMessagesResponse struct {
-	Messages []MessageResource `json:"messages"`
+	Messages []Resource `json:"messages"`
 }
 
 func listMessagesRequestToMap(lmr ListMessagesRequest) map[string]string {

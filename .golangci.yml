@@ -13,6 +13,7 @@ linters:
 
     # deprecated linters
     - gomnd
+    - exportloopref
     - execinquery
 
 linters-settings:
@@ -47,7 +48,6 @@ linters-settings:
       - name: error-strings
       - name: error-naming
       - name: exported
-        disabled: true
       - name: if-return
       - name: increment-decrement
       - name: var-naming
@@ -63,7 +63,6 @@ linters-settings:
       - name: empty-block
       - name: superfluous-else
       - name: unused-parameter
-        disabled: true
       - name: unreachable-code
       - name: redefines-builtin-id
   staticcheck:

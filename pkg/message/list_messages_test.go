@@ -44,7 +44,7 @@ func TestListMessages(t *testing.T) {
 		SenderID:                   "46",
 		SenderIDs:                  []string{"47", "48"},
 		OperatorFilter:             OperatorFilterAll,
-		MessageType:                MessageTypeText,
+		MessageType:                TypeText,
 		CustomTypes:                []string{"*"},
 		IncludingRemoved:           ptr(true),
 		IncludeParentMessageInfo:   ptr(true),
@@ -58,7 +58,7 @@ func TestListMessages(t *testing.T) {
 	}
 
 	listMessagesResponse := &ListMessagesResponse{
-		Messages: []MessageResource{{
+		Messages: []Resource{{
 			MessageID: 69,
 		}},
 	}

@@ -46,7 +46,7 @@ func TestValidateSMR(t *testing.T) {
 		{
 			name: "without user id",
 			smr: SendMessageRequest{
-				MessageType: MessageTypeText,
+				MessageType: TypeText,
 				Message:     "Hello, World!",
 			},
 			assertErr: assert.Error,
@@ -54,7 +54,7 @@ func TestValidateSMR(t *testing.T) {
 		{
 			name: "text message without message",
 			smr: SendMessageRequest{
-				MessageType: MessageTypeText,
+				MessageType: TypeText,
 				UserID:      "42",
 			},
 			assertErr: assert.Error,
@@ -62,7 +62,7 @@ func TestValidateSMR(t *testing.T) {
 		{
 			name: "file message without files",
 			smr: SendMessageRequest{
-				MessageType: MessageTypeFile,
+				MessageType: TypeFile,
 				UserID:      "42",
 			},
 			assertErr: assert.Error,
@@ -70,7 +70,7 @@ func TestValidateSMR(t *testing.T) {
 		{
 			name: "file message with files, but not url",
 			smr: SendMessageRequest{
-				MessageType: MessageTypeFile,
+				MessageType: TypeFile,
 				UserID:      "42",
 				Files:       []File{{}},
 			},
@@ -79,7 +79,7 @@ func TestValidateSMR(t *testing.T) {
 		{
 			name: "valid text message",
 			smr: SendMessageRequest{
-				MessageType: MessageTypeText,
+				MessageType: TypeText,
 				UserID:      "42",
 				Message:     "Hello, World!",
 			},
@@ -88,7 +88,7 @@ func TestValidateSMR(t *testing.T) {
 		{
 			name: "valid file message",
 			smr: SendMessageRequest{
-				MessageType: MessageTypeFile,
+				MessageType: TypeFile,
 				UserID:      "42",
 				Files: []File{
 					{URL: "https://example.com/file1"},
@@ -120,7 +120,7 @@ func TestSendMessage(t *testing.T) {
 		{
 			name: "Text Message",
 			smrq: SendMessageRequest{
-				MessageType:         MessageTypeText,
+				MessageType:         TypeText,
 				UserID:              "42",
 				Message:             "Hello, World!",
 				CustomType:          "custom-type",
@@ -150,7 +150,7 @@ func TestSendMessage(t *testing.T) {
 		{
 			name: "File Message",
 			smrq: SendMessageRequest{
-				MessageType: MessageTypeFile,
+				MessageType: TypeFile,
 				UserID:      "42",
 				Files: []File{
 					{URL: "https://example.com/file1"},

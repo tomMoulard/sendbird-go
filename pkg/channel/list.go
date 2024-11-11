@@ -232,7 +232,7 @@ type ListGroupChannelRequest struct {
 type ListGroupChannelResponse struct {
 	// Channels is the list of group channel objects that match the specified
 	// optional parameters.
-	Channels []ChannelResource `json:"channels"`
+	Channels []Resource `json:"channels"`
 	// Next is the value for the token parameter to retrieve the next page in the
 	// result.
 	Next string `json:"next"`
