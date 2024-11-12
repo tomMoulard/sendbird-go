@@ -323,7 +323,7 @@ func TestLeak(t *testing.T) {
 		assert.Equal(t, "https:///v3/foo/bar", u.String())
 	}
 
-	s := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+	s := httptest.NewServer(http.HandlerFunc(func(_ http.ResponseWriter, r *http.Request) {
 		assert.Equal(t, http.MethodGet, r.Method)
 		assert.Equal(t, "/baz/buz", r.URL.Path)
 	}))

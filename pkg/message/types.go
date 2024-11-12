@@ -1,11 +1,11 @@
 package message
 
-type MessageType string
+type Type string
 
 const (
-	MessageTypeText         MessageType = "MESG"
-	MessageTypeFile         MessageType = "FILE"
-	MessageTypeAdminMessage MessageType = "ADMM"
+	TypeText         Type = "MESG"
+	TypeFile         Type = "FILE"
+	TypeAdminMessage Type = "ADMM"
 )
 
 type ChannelType string
@@ -70,30 +70,30 @@ type Poll struct {
 	Options             []PollOption `json:"options"`
 }
 
-type MessageEvents struct {
+type Events struct {
 	SendPushNotification string `json:"send_push_notification"`
 	UpdateUnreadCount    bool   `json:"update_unread_count"`
 	UpdateMentionCount   bool   `json:"update_mention_count"`
 	UpdateLastMessage    bool   `json:"update_last_message"`
 }
 
-// MessageResource is the resource of a message.
-type MessageResource struct {
-	MessageID            int           `json:"message_id"`
-	Type                 string        `json:"type"`
-	CustomType           string        `json:"custom_type"`
-	ChannelURL           string        `json:"channel_url"`
-	User                 User          `json:"user"`
-	MentionType          string        `json:"mention_type"`
-	MentionedUsers       []User        `json:"mentioned_users"`
-	IsRemoved            bool          `json:"is_removed"`
-	Message              string        `json:"message"`
-	Data                 string        `json:"data"`
-	Poll                 Poll          `json:"poll"`
-	MessageEvents        MessageEvents `json:"message_events"`
-	CreatedAt            int64         `json:"created_at"`
-	UpdatedAt            int           `json:"updated_at"`
-	IsAppleCriticalAlert bool          `json:"is_apple_critical_alert"`
+// Resource is the resource of a message.
+type Resource struct {
+	MessageID            int    `json:"message_id"`
+	Type                 string `json:"type"`
+	CustomType           string `json:"custom_type"`
+	ChannelURL           string `json:"channel_url"`
+	User                 User   `json:"user"`
+	MentionType          string `json:"mention_type"`
+	MentionedUsers       []User `json:"mentioned_users"`
+	IsRemoved            bool   `json:"is_removed"`
+	Message              string `json:"message"`
+	Data                 string `json:"data"`
+	Poll                 Poll   `json:"poll"`
+	MessageEvents        Events `json:"message_events"`
+	CreatedAt            int64  `json:"created_at"`
+	UpdatedAt            int    `json:"updated_at"`
+	IsAppleCriticalAlert bool   `json:"is_apple_critical_alert"`
 }
 
 type MetaArray struct {

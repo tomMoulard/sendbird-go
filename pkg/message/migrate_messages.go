@@ -11,7 +11,7 @@ type TextMessage struct {
 	UserID string `json:"user_id"`
 
 	// MessageType specifies the type of the message - required.
-	MessageType MessageType `json:"message_type"`
+	MessageType Type `json:"message_type"`
 
 	// Message specifies the content of the message - required.
 	Message string `json:"message,omitempty"`

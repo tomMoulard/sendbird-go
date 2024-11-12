@@ -7,7 +7,8 @@ all: mod inst gen build spell lint test
 
 .PHONY: ci
 ci: ## CI build pipeline
-ci: all check mocktail diff
+# ci: all check mocktail diff
+ci: all check diff # for now mocktail seems to be broken
 
 .PHONY: help
 help:

@@ -28,7 +28,7 @@ type File struct {
 // SendMessageRequest is the request to send a message.
 type SendMessageRequest struct {
 	// MessageType specifies the type of the message.
-	MessageType MessageType `json:"message_type"`
+	MessageType Type `json:"message_type"`
 	// UserID specifies the user ID of the sender.
 	UserID string `json:"user_id"`
 
@@ -126,11 +126,11 @@ func (smr *SendMessageRequest) Validate() error {
 	}
 
 	switch {
-	case smr.MessageType == MessageTypeText && smr.Message == "":
+	case smr.MessageType == TypeText && smr.Message == "":
 		return errors.New("message is required for text message")
-	case smr.MessageType == MessageTypeFile && len(smr.Files) == 0:
+	case smr.MessageType == TypeFile && len(smr.Files) == 0:
 		return errors.New("files are required for file message")
-	case smr.MessageType == MessageTypeFile:
+	case smr.MessageType == TypeFile:
 		for _, file := range smr.Files {
 			if file.URL == "" {
 				return errors.New("file URL is required")
@@ -142,7 +142,7 @@ func (smr *SendMessageRequest) Validate() error {
 }
 
 // SendMessageResponse is the response to send a message.
-type SendMessageResponse MessageResource
+type SendMessageResponse Resource
 
 // SendMessage sends a message to a channel.
 // See https://sendbird.com/docs/chat/platform-api/v3/message/messaging-basics/send-a-message

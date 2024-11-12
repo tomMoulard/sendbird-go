@@ -99,7 +99,7 @@ type CreateGroupChannelRequest struct {
 }
 
 // CreateGroupChannelResponse is the response of the create channel request.
-type CreateGroupChannelResponse ChannelResource
+type CreateGroupChannelResponse Resource
 
 // CreateGroupChannel creates a group/super channel.
 // https://sendbird.com/docs/chat/platform-api/v3/channel/creating-a-channel/create-a-group-channel

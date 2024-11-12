@@ -28,7 +28,7 @@ func TestValidateMMR(t *testing.T) {
 			request: MigrateMessagesRequest{
 				Messages: []TextMessage{
 					{
-						MessageType: MessageTypeText,
+						MessageType: TypeText,
 						Message:     "Hello, World!",
 						Timestamp:   1609459200000,
 					},
@@ -55,7 +55,7 @@ func TestValidateMMR(t *testing.T) {
 				Messages: []TextMessage{
 					{
 						UserID:      "42",
-						MessageType: MessageTypeText,
+						MessageType: TypeText,
 						Timestamp:   1609459200000,
 					},
 				},
@@ -68,7 +68,7 @@ func TestValidateMMR(t *testing.T) {
 				Messages: []TextMessage{
 					{
 						UserID:      "42",
-						MessageType: MessageTypeText,
+						MessageType: TypeText,
 						Message:     "Hello, World!",
 					},
 				},
@@ -94,7 +94,7 @@ func TestMigrateMessages(t *testing.T) {
 		Messages: []TextMessage{
 			{
 				UserID:      "42",
-				MessageType: MessageTypeText,
+				MessageType: TypeText,
 				Message:     "Hello, World!",
 				Timestamp:   1609459200000,
 				CustomType:  "greeting",

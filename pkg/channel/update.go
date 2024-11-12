@@ -48,7 +48,7 @@ type UpdateGroupChannelRequest struct {
 }
 
 // UpdateGroupChannelResponse is the response of the update channel request.
-type UpdateGroupChannelResponse ChannelResource
+type UpdateGroupChannelResponse Resource
 
 // UpdateGroupChannel updates a group channel.
 // See https://sendbird.com/docs/chat/platform-api/v3/channel/managing-a-channel/update-a-group-channel

@@ -103,7 +103,7 @@ func TestListGroupChannels(t *testing.T) {
 	}
 
 	listChannelsResponse := &ListGroupChannelResponse{
-		Channels: []ChannelResource{{
+		Channels: []Resource{{
 			Name: "channel-name",
 		}},
 	}

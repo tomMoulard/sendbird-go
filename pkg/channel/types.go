@@ -72,28 +72,28 @@ type Operator struct {
 	Metadata   map[string]interface{} `json:"metadata"`
 }
 
-// ChannelResource is the resource of a channel.
-type ChannelResource struct {
-	Name                   string                  `json:"name"`
-	ChannelURL             string                  `json:"channel_url"`
-	CoverURL               string                  `json:"cover_url"`
-	CustomType             string                  `json:"custom_type"`
-	UnreadMessageCount     int                     `json:"unread_message_count"`
-	Data                   string                  `json:"data"`
-	IsDistinct             bool                    `json:"is_distinct"`
-	IsPublic               bool                    `json:"is_public"`
-	IsSuper                bool                    `json:"is_super"`
-	IsEphemeral            bool                    `json:"is_ephemeral"`
-	IsAccessCodeRequired   bool                    `json:"is_access_code_required"`
-	MemberCount            int                     `json:"member_count"`
-	JoinedMemberCount      int                     `json:"joined_member_count"`
-	UnreadMentionCount     int                     `json:"unread_mention_count"`
-	CreatedBy              CreatedBy               `json:"created_by"`
-	Members                []Member                `json:"members"`
-	Operators              []Operator              `json:"operators"`
-	LastMessage            message.MessageResource `json:"last_message"`
-	MessageSurvivalSeconds int                     `json:"message_survival_seconds"`
-	MaxLengthMessage       int                     `json:"max_length_message"`
-	CreatedAt              int                     `json:"created_at"`
-	Freeze                 bool                    `json:"freeze"`
+// Resource is the resource of a channel.
+type Resource struct {
+	Name                   string           `json:"name"`
+	ChannelURL             string           `json:"channel_url"`
+	CoverURL               string           `json:"cover_url"`
+	CustomType             string           `json:"custom_type"`
+	UnreadMessageCount     int              `json:"unread_message_count"`
+	Data                   string           `json:"data"`
+	IsDistinct             bool             `json:"is_distinct"`
+	IsPublic               bool             `json:"is_public"`
+	IsSuper                bool             `json:"is_super"`
+	IsEphemeral            bool             `json:"is_ephemeral"`
+	IsAccessCodeRequired   bool             `json:"is_access_code_required"`
+	MemberCount            int              `json:"member_count"`
+	JoinedMemberCount      int              `json:"joined_member_count"`
+	UnreadMentionCount     int              `json:"unread_mention_count"`
+	CreatedBy              CreatedBy        `json:"created_by"`
+	Members                []Member         `json:"members"`
+	Operators              []Operator       `json:"operators"`
+	LastMessage            message.Resource `json:"last_message"`
+	MessageSurvivalSeconds int              `json:"message_survival_seconds"`
+	MaxLengthMessage       int              `json:"max_length_message"`
+	CreatedAt              int              `json:"created_at"`
+	Freeze                 bool             `json:"freeze"`
 }
