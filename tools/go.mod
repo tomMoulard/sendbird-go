@@ -9,7 +9,7 @@ require (
 	github.com/golangci/golangci-lint v1.62.0
 	github.com/goreleaser/goreleaser/v2 v2.4.4
 	github.com/traefik/mocktail v0.6.0
-	golang.org/x/vuln v1.1.2
+	golang.org/x/vuln v1.1.3
 )
 
 require (
