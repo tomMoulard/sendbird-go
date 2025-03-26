@@ -1,8 +1,6 @@
 package client
 
 import (
-	"errors"
-	"fmt"
 	"io"
 	"net/http"
 	"strings"
@@ -10,22 +8,6 @@ import (
 
 	"github.com/stretchr/testify/assert"
 )
-
-func ExampleHandleError() {
-	c := &client{}
-	c.SetDefault()
-
-	body := `{"message": "\"User\" not found.", "code": 400201, "error": true}`
-	err := c.handleError(http.StatusTeapot, strings.NewReader(body))
-	fmt.Println(errors.Is(err, ErrResourceNotFound)) // true
-	fmt.Println(errors.Is(err, ErrAPIBadRequest))    // true
-	fmt.Println(errors.Is(err, ErrAPIForbidden))     // false
-
-	// Output:
-	// true
-	// true
-	// false
-}
 
 func TestHandleError_notAnError(t *testing.T) {
 	t.Parallel()

@@ -1,7 +1,6 @@
 package channel
 
 import (
-	"context"
 	"testing"
 
 	"github.com/stretchr/testify/require"
@@ -16,7 +15,7 @@ func TestStartTyping(t *testing.T) {
 		Parent
 	channel := NewChannel(client)
 
-	err := channel.StartTyping(context.Background(), "channel-url", []string{"user-id"})
+	err := channel.StartTyping(t.Context(), "channel-url", []string{"user-id"})
 	require.NoError(t, err)
 }
 
@@ -28,6 +27,6 @@ func TestStopTyping(t *testing.T) {
 		Parent
 	channel := NewChannel(client)
 
-	err := channel.StopTyping(context.Background(), "channel-url", []string{"user-id"})
+	err := channel.StopTyping(t.Context(), "channel-url", []string{"user-id"})
 	require.NoError(t, err)
 }

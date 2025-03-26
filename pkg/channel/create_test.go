@@ -1,7 +1,6 @@
 package channel
 
 import (
-	"context"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -39,7 +38,7 @@ func TestCreateGroupChannel(t *testing.T) {
 		Parent
 	channel := NewChannel(client)
 
-	cur, err := channel.CreateGroupChannel(context.Background(), createChannelRequest)
+	cur, err := channel.CreateGroupChannel(t.Context(), createChannelRequest)
 	require.NoError(t, err)
 	assert.Equal(t, createChannelResponse, cur)
 }

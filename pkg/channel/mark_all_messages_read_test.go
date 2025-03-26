@@ -1,7 +1,6 @@
 package channel
 
 import (
-	"context"
 	"testing"
 
 	"github.com/stretchr/testify/require"
@@ -16,6 +15,6 @@ func TestMarkAsRead(t *testing.T) {
 		Parent
 	channel := NewChannel(client)
 
-	err := channel.MarkAsRead(context.Background(), "channel-url", "user-id")
+	err := channel.MarkAsRead(t.Context(), "channel-url", "user-id")
 	require.NoError(t, err)
 }

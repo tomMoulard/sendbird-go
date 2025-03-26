@@ -1,7 +1,6 @@
 package user
 
 import (
-	"context"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -26,7 +25,7 @@ func TestGetUnreadMessagesCount(t *testing.T) {
 		Parent
 	user := NewUser(client)
 
-	cur, err := user.GetUnreadMessagesCount(context.Background(), "42", getUnreadMessagesCountRequest)
+	cur, err := user.GetUnreadMessagesCount(t.Context(), "42", getUnreadMessagesCountRequest)
 	require.NoError(t, err)
 	assert.Equal(t, getUnreadMessagesCountResponse, cur)
 }

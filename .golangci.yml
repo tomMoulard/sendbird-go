@@ -12,9 +12,7 @@ linters:
     - lll  # Not relevant
 
     # deprecated linters
-    - gomnd
-    - exportloopref
-    - execinquery
+    - tenv
 
 linters-settings:
   depguard:
