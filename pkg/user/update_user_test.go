@@ -1,7 +1,6 @@
 package user
 
 import (
-	"context"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -47,7 +46,7 @@ func TestUpdateUser(t *testing.T) {
 		Parent
 	user := NewUser(client)
 
-	cur, err := user.UpdateUser(context.Background(), "42", updateUserRequest)
+	cur, err := user.UpdateUser(t.Context(), "42", updateUserRequest)
 	require.NoError(t, err)
 	assert.Equal(t, updateUserResponse, cur)
 }

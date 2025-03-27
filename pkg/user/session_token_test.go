@@ -1,7 +1,6 @@
 package user
 
 import (
-	"context"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -26,7 +25,7 @@ func TestGetSessionToken(t *testing.T) {
 		Parent
 	user := NewUser(client)
 
-	cur, err := user.GetSessionToken(context.Background(), "42", getSessionTokenRequest)
+	cur, err := user.GetSessionToken(t.Context(), "42", getSessionTokenRequest)
 	require.NoError(t, err)
 	assert.Equal(t, getSessionTokenResponse, cur)
 }

@@ -1,7 +1,6 @@
 package message
 
 import (
-	"context"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -125,7 +124,7 @@ func TestMigrateMessages(t *testing.T) {
 				Parent
 			message := NewMessage(client)
 
-			err := message.MigrateMessages(context.Background(), "channel_url", test.request)
+			err := message.MigrateMessages(t.Context(), "channel_url", test.request)
 			test.assertErr(t, err)
 		})
 	}

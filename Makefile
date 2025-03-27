@@ -26,12 +26,10 @@ clean: ## remove files created during build pipeline
 mod: ## go mod tidy
 	$(call print-target)
 	go mod tidy -x
-	cd tools && go mod tidy -x
 
 .PHONY: inst
 inst: ## go install tools
 	$(call print-target)
-	cd tools && go install $(shell cd tools && go list -e -f '{{ join .Imports " " }}' -tags=tools)
 	pip install --user yamllint
 
 .PHONY: gen
@@ -42,31 +40,31 @@ gen: ## go generate
 .PHONY: mocktail
 mocktail: ## go mocktail
 	$(call print-target)
-	mocktail -e ./...
+	go tool mocktail -e ./...
 
 .PHONY: build
 build: ## goreleaser build
 build:
 	$(call print-target)
-	goreleaser build --clean --single-target --snapshot
+	go tool goreleaser build --clean --single-target --snapshot
 
 .PHONY: spell
 spell: ## misspell
 	$(call print-target)
-	misspell -error -locale=US -w **.md
+	go tool misspell -error -locale=US -w **.md
 
 .PHONY: lint
 lint: ## golangci-lint
 	$(call print-target)
 	yamllint .
-	goreleaser check
-	golangci-lint run
+	go tool goreleaser check
+	go tool golangci-lint run
 
 .PHONY: check
 check: ## govulncheck
 	$(call print-target)
-	govulncheck -scan package ./...
-	govulncheck ./...
+	go tool govulncheck -scan package ./...
+	go tool govulncheck ./...
 
 .PHONY: test
 test: ## go test

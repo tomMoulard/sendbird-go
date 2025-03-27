@@ -1,7 +1,6 @@
 package message
 
 import (
-	"context"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -68,7 +67,7 @@ func TestListMessages(t *testing.T) {
 		Parent
 	message := NewMessage(client)
 
-	cur, err := message.ListMessages(context.Background(), ChannelTypeGroup, "url", listMessagesRequest)
+	cur, err := message.ListMessages(t.Context(), ChannelTypeGroup, "url", listMessagesRequest)
 	require.NoError(t, err)
 	assert.Equal(t, listMessagesResponse, cur)
 }

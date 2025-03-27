@@ -39,7 +39,7 @@ func TestSendMessage(t *testing.T) {
 		message: messageMock,
 	}
 
-	got, err := c.SendMessage(context.Background(), message.ChannelTypeGroup, "channelURL", req)
+	got, err := c.SendMessage(t.Context(), message.ChannelTypeGroup, "channelURL", req)
 	require.NoError(t, err)
 	assert.Equal(t, 42, got.MessageID)
 }

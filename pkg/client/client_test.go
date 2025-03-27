@@ -2,7 +2,6 @@ package client
 
 import (
 	"bytes"
-	"context"
 	"encoding/json"
 	"io"
 	"log/slog"
@@ -180,7 +179,7 @@ func TestGET(t *testing.T) {
 		WithHTTPClient(httpClient),
 	)
 
-	_, err := c.Get(context.Background(), "/foo/bar", nil, nil)
+	_, err := c.Get(t.Context(), "/foo/bar", nil, nil)
 	require.NoError(t, err)
 }
 
@@ -204,7 +203,7 @@ func TestPOST(t *testing.T) {
 		WithHTTPClient(httpClient),
 	)
 
-	_, err := c.Post(context.Background(), "/foo/bar", nil, nil)
+	_, err := c.Post(t.Context(), "/foo/bar", nil, nil)
 	require.NoError(t, err)
 }
 
@@ -228,7 +227,7 @@ func TestPUT(t *testing.T) {
 		WithHTTPClient(httpClient),
 	)
 
-	_, err := c.Put(context.Background(), "/foo/bar", nil, nil)
+	_, err := c.Put(t.Context(), "/foo/bar", nil, nil)
 	require.NoError(t, err)
 }
 
@@ -252,7 +251,7 @@ func TestDelete(t *testing.T) {
 		WithHTTPClient(httpClient),
 	)
 
-	_, err := c.Delete(context.Background(), "/foo/bar", nil, nil)
+	_, err := c.Delete(t.Context(), "/foo/bar", nil, nil)
 	require.NoError(t, err)
 }
 
@@ -334,7 +333,7 @@ func TestLeak(t *testing.T) {
 	require.NoError(t, err)
 
 	for range 100 {
-		_, err := c.do(context.Background(), http.MethodGet, "/baz/buz", nil, nil)
+		_, err := c.do(t.Context(), http.MethodGet, "/baz/buz", nil, nil)
 		assert.NoError(t, err)
 	}
 }

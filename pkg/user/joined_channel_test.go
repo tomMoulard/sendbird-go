@@ -1,7 +1,6 @@
 package user
 
 import (
-	"context"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -28,7 +27,7 @@ func TestGetGroupChannelCount(t *testing.T) {
 		Parent
 	user := NewUser(client)
 
-	cur, err := user.GetGroupChannelCount(context.Background(), "42", getGroupChannelCountRequest)
+	cur, err := user.GetGroupChannelCount(t.Context(), "42", getGroupChannelCountRequest)
 	require.NoError(t, err)
 	assert.Equal(t, getGroupChannelCountResponse, cur)
 }
