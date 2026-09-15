@@ -39,10 +39,10 @@ const (
 )
 
 type User struct {
-	UserID     string                 `json:"user_id"`
-	Nickname   string                 `json:"nickname"`
-	ProfileURL string                 `json:"profile_url"`
-	Metadata   map[string]interface{} `json:"metadata"`
+	UserID     string         `json:"user_id"`
+	Nickname   string         `json:"nickname"`
+	ProfileURL string         `json:"profile_url"`
+	Metadata   map[string]any `json:"metadata"`
 }
 
 type PollOption struct {

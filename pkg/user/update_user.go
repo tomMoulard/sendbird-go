@@ -42,21 +42,21 @@ type UpdateUserRequest struct {
 }
 
 type UpdateUserResponse struct {
-	UserID                     string                 `json:"user_id"`
-	Nickname                   string                 `json:"nickname"`
-	ProfileURL                 string                 `json:"profile_url"`
-	AccessToken                string                 `json:"access_token"`
-	IsOnline                   bool                   `json:"is_online"`
-	IsActive                   bool                   `json:"is_active"`
-	IsCreated                  bool                   `json:"is_created"`
-	PhoneNumber                string                 `json:"phone_number"`
-	RequireAuthForProfileImage bool                   `json:"require_auth_for_profile_image"`
-	SessionTokens              []interface{}          `json:"session_tokens"`
-	LastSeenAt                 int                    `json:"last_seen_at"`
-	DiscoveryKeys              []string               `json:"discovery_keys"`
-	PreferredLanguages         []interface{}          `json:"preferred_languages"`
-	HasEverLoggedIn            bool                   `json:"has_ever_logged_in"`
-	Metadata                   map[string]interface{} `json:"metadata"`
+	UserID                     string         `json:"user_id"`
+	Nickname                   string         `json:"nickname"`
+	ProfileURL                 string         `json:"profile_url"`
+	AccessToken                string         `json:"access_token"`
+	IsOnline                   bool           `json:"is_online"`
+	IsActive                   bool           `json:"is_active"`
+	IsCreated                  bool           `json:"is_created"`
+	PhoneNumber                string         `json:"phone_number"`
+	RequireAuthForProfileImage bool           `json:"require_auth_for_profile_image"`
+	SessionTokens              []any          `json:"session_tokens"`
+	LastSeenAt                 int            `json:"last_seen_at"`
+	DiscoveryKeys              []string       `json:"discovery_keys"`
+	PreferredLanguages         []any          `json:"preferred_languages"`
+	HasEverLoggedIn            bool           `json:"has_ever_logged_in"`
+	Metadata                   map[string]any `json:"metadata"`
 }
 
 // UpdateUserRequest is the request to update a user.

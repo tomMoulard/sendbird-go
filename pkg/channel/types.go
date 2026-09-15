@@ -50,26 +50,26 @@ type CreatedBy struct {
 }
 
 type Member struct {
-	UserID     string                 `json:"user_id"`
-	Nickname   string                 `json:"nickname"`
-	ProfileURL string                 `json:"profile_url"`
-	IsActive   bool                   `json:"is_active"`
-	IsOnline   bool                   `json:"is_online"`
-	LastSeenAt int64                  `json:"last_seen_at"`
-	State      string                 `json:"state"`
-	Role       string                 `json:"role"`
-	Metadata   map[string]interface{} `json:"metadata"`
+	UserID     string         `json:"user_id"`
+	Nickname   string         `json:"nickname"`
+	ProfileURL string         `json:"profile_url"`
+	IsActive   bool           `json:"is_active"`
+	IsOnline   bool           `json:"is_online"`
+	LastSeenAt int64          `json:"last_seen_at"`
+	State      string         `json:"state"`
+	Role       string         `json:"role"`
+	Metadata   map[string]any `json:"metadata"`
 }
 
 type Operator struct {
-	UserID     string                 `json:"user_id"`
-	Nickname   string                 `json:"nickname"`
-	ProfileURL string                 `json:"profile_url"`
-	IsActive   bool                   `json:"is_active"`
-	IsOnline   bool                   `json:"is_online"`
-	LastSeenAt int                    `json:"last_seen_at"`
-	State      string                 `json:"state"`
-	Metadata   map[string]interface{} `json:"metadata"`
+	UserID     string         `json:"user_id"`
+	Nickname   string         `json:"nickname"`
+	ProfileURL string         `json:"profile_url"`
+	IsActive   bool           `json:"is_active"`
+	IsOnline   bool           `json:"is_online"`
+	LastSeenAt int            `json:"last_seen_at"`
+	State      string         `json:"state"`
+	Metadata   map[string]any `json:"metadata"`
 }
 
 // Resource is the resource of a channel.
