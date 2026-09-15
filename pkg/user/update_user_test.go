@@ -31,12 +31,12 @@ func TestUpdateUser(t *testing.T) {
 		IsActive:                   true,
 		PhoneNumber:                "phone-number",
 		RequireAuthForProfileImage: true,
-		SessionTokens:              []interface{}{},
+		SessionTokens:              []any{},
 		LastSeenAt:                 0,
 		DiscoveryKeys:              []string{},
-		PreferredLanguages:         []interface{}{},
+		PreferredLanguages:         []any{},
 		HasEverLoggedIn:            true,
-		Metadata: map[string]interface{}{
+		Metadata: map[string]any{
 			"key": "value",
 		},
 	}

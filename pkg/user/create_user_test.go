@@ -16,7 +16,7 @@ func TestCreateUser(t *testing.T) {
 		Nickname:         "nickname",
 		ProfileURL:       "profile-url",
 		IssueAccessToken: true,
-		Metadata: map[string]interface{}{
+		Metadata: map[string]any{
 			"key": "value",
 		},
 	}
@@ -31,12 +31,12 @@ func TestCreateUser(t *testing.T) {
 		IsCreated:                  true,
 		PhoneNumber:                "phone-number",
 		RequireAuthForProfileImage: true,
-		SessionTokens:              []interface{}{},
+		SessionTokens:              []any{},
 		LastSeenAt:                 0,
 		DiscoveryKeys:              []string{},
-		PreferredLanguages:         []interface{}{},
+		PreferredLanguages:         []any{},
 		HasEverLoggedIn:            true,
-		Metadata: map[string]interface{}{
+		Metadata: map[string]any{
 			"key": "value",
 		},
 	}

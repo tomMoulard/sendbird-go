@@ -147,7 +147,8 @@ type SendMessageResponse Resource
 // SendMessage sends a message to a channel.
 // See https://sendbird.com/docs/chat/platform-api/v3/message/messaging-basics/send-a-message
 func (m *message) SendMessage(ctx context.Context, channelType ChannelType, channelURL string, sendMessageRequest SendMessageRequest) (*SendMessageResponse, error) {
-	if err := sendMessageRequest.Validate(); err != nil {
+	err := sendMessageRequest.Validate()
+	if err != nil {
 		return nil, fmt.Errorf("failed to validate send message request: %w", err)
 	}
 

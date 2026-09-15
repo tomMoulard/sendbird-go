@@ -76,7 +76,8 @@ func (c *client) do(ctx context.Context, method, path string, obj any, resp any)
 	}
 
 	if resp != nil {
-		if err := json.NewDecoder(r.Body).Decode(resp); err != nil {
+		err := json.NewDecoder(r.Body).Decode(resp)
+		if err != nil {
 			return nil, fmt.Errorf("failed to decode response: %w", err)
 		}
 
