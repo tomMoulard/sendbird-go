@@ -1,148 +1,174 @@
-run:
-  timeout: 10m
-
+version: "2"
 linters:
-  enable-all: true
+  default: all
   disable:
-    - ireturn  # Not relevant
-    - exhaustruct  # Not relevant
-    - testpackage  # Too strict
-    - varnamelen  # Not relevant
-    - err113  # Too strict
-    - lll  # Not relevant
+    - err113
+    - exhaustruct
+    - exhaustruct_v5
+    - ireturn
+    - lll
+    - testpackage
+    - varnamelen
 
-    # deprecated linters
-    - tenv
-
-linters-settings:
-  depguard:
-    rules:
-      main:
-        deny:
-          - pkg: "github.com/instana/testify"
-            desc: not allowed
-  tagalign:
-    align: false
-    sort: true
-    order:
-      - description
-      - json
-      - toml
-      - yaml
-      - yml
-      - label
-      - label-slice-as-struct
-      - file
-      - kv
-      - export
-  revive:
-    rules:
-      - name: struct-tag
-      - name: blank-imports
-      - name: context-as-argument
-      - name: context-keys-type
-      - name: dot-imports
-      - name: error-return
-      - name: error-strings
-      - name: error-naming
-      - name: exported
-      - name: if-return
-      - name: increment-decrement
-      - name: var-naming
-      - name: var-declaration
-      - name: package-comments
-        disabled: true
-      - name: range
-      - name: receiver-naming
-      - name: time-naming
-      - name: unexported-return
-      - name: indent-error-flow
-      - name: errorf
-      - name: empty-block
-      - name: superfluous-else
-      - name: unused-parameter
-      - name: unreachable-code
-      - name: redefines-builtin-id
-  staticcheck:
-    checks:
-      - all
-  misspell:
-    locale: US
-  govet:
-    enable-all: true
-    disable:
-      - fieldalignment
-  tagliatelle:
-    case:
-      use-field-name: true
+    # deprecated linters, replaced by their new major version
+    - gomodguard
+    - wsl
+  settings:
+    depguard:
       rules:
-        json: snake
-  testifylint:
-    disable:
-      - require-error
-
-issues:
-  exclude-rules:
-    - path: '(.+)_test.go'
-      linters:
-        - funlen
-        - gosec
-    - path: '(.+)example_test.go'
-      linters:
-        - testableexamples
-    - path: 'pkg/client/errors_test.go'
-      text: 'tests: ExampleHandleError refers to unknown identifier: HandleError'
-      linters:
-        - govet
-    - path: 'pkg/client/errors_test.go'
-      text: 'Duplicate words \(true\) found'
-      linters:
-        - dupword
-    - path: 'pkg/message/send_message.go'
-      text: "got 'mentioned_user_ids' want 'mention_user_i_ds'"
-      linters:
-        - tagliatelle
-    - path: 'pkg/message/list_messages.go'
-      text: "Function 'listMessagesRequestToMap' is too long"
-      linters:
-        - funlen
-    - path: 'pkg/message/list_messages.go'
-      text: "calculated cyclomatic complexity for function listMessagesRequestToMap"
-      linters:
-        - cyclop
-    - path: 'pkg/channel/create.go'
-      text: "got 'operator_ids' want 'operator_i_ds'"
-      linters:
-        - tagliatelle
-    - path: 'pkg/channel/create.go'
-      text: "got 'user_ids' want 'user_i_ds'"
-      linters:
-        - tagliatelle
-    - path: 'pkg/channel/update.go'
-      text: "got 'operator_ids' want 'operator_i_ds'"
-      linters:
-        - tagliatelle
-    - path: 'pkg/channel/list.go'
-      text: "Function 'ListChannelRequestToMap' has too many statements"
-      linters:
-        - funlen
-    - path: 'pkg/channel/list.go'
-      text: 'cognitive complexity \d+ of func \`ListChannelRequestToMap\` is high'
-      linters:
-        - gocognit
-    - path: 'pkg/channel/list.go'
-      text: 'cyclomatic complexity \d+ of func `ListChannelRequestToMap` is high'
-      linters:
-        - gocyclo
-    - path: 'pkg/channel/list.go'
-      text: 'calculated cyclomatic complexity for function ListChannelRequestToMap'
-      linters:
-        - cyclop
-    - path: 'pkg/channel/typing.go'
-      text: "got 'user_ids' want 'user_i_ds'"
-      linters:
-        - tagliatelle
-    - path: 'pkg/message/migrate_messages.go'
-      text: "got 'mentioned_user_ids' want 'mention_user_i_ds'"
-      linters:
-        - tagliatelle
+        main:
+          deny:
+            - pkg: github.com/instana/testify
+              desc: not allowed
+    goconst:
+      ignore-tests: true
+    govet:
+      disable:
+        - fieldalignment
+      enable-all: true
+    misspell:
+      locale: US
+    modernize:
+      disable:
+        # rewrites ptr(x) to new(x), which gocritic newDeref then flags
+        - newexpr
+    revive:
+      rules:
+        - name: struct-tag
+        - name: blank-imports
+        - name: context-as-argument
+        - name: context-keys-type
+        - name: dot-imports
+        - name: error-return
+        - name: error-strings
+        - name: error-naming
+        - name: exported
+        - name: if-return
+        - name: increment-decrement
+        - name: var-naming
+        - name: var-declaration
+        - name: package-comments
+          disabled: true
+        - name: range
+        - name: receiver-naming
+        - name: time-naming
+        - name: unexported-return
+        - name: indent-error-flow
+        - name: errorf
+        - name: empty-block
+        - name: superfluous-else
+        - name: unused-parameter
+        - name: unreachable-code
+        - name: redefines-builtin-id
+    staticcheck:
+      checks:
+        - all
+    tagalign:
+      align: false
+      sort: true
+      order:
+        - description
+        - json
+        - toml
+        - yaml
+        - yml
+        - label
+        - label-slice-as-struct
+        - file
+        - kv
+        - export
+    tagliatelle:
+      case:
+        rules:
+          json: snake
+        use-field-name: true
+    testifylint:
+      disable:
+        - require-error
+  exclusions:
+    generated: lax
+    presets:
+      - comments
+      - common-false-positives
+      - legacy
+      - std-error-handling
+    rules:
+      - linters:
+          - funlen
+          - gosec
+        path: (.+)_test.go
+      - linters:
+          - testableexamples
+        path: (.+)example_test.go
+      - linters:
+          - govet
+        path: pkg/client/errors_test.go
+        text: 'tests: ExampleHandleError refers to unknown identifier: HandleError'
+      - linters:
+          - dupword
+        path: pkg/client/errors_test.go
+        text: Duplicate words \(true\) found
+      - linters:
+          - tagliatelle
+        path: pkg/message/send_message.go
+        text: got 'mentioned_user_ids' want 'mention_user_i_ds'
+      - linters:
+          - funlen
+        path: pkg/message/list_messages.go
+        text: Function 'listMessagesRequestToMap' is too long
+      - linters:
+          - cyclop
+        path: pkg/message/list_messages.go
+        text: calculated cyclomatic complexity for function listMessagesRequestToMap
+      - linters:
+          - tagliatelle
+        path: pkg/channel/create.go
+        text: got 'operator_ids' want 'operator_i_ds'
+      - linters:
+          - tagliatelle
+        path: pkg/channel/create.go
+        text: got 'user_ids' want 'user_i_ds'
+      - linters:
+          - tagliatelle
+        path: pkg/channel/update.go
+        text: got 'operator_ids' want 'operator_i_ds'
+      - linters:
+          - funlen
+        path: pkg/channel/list.go
+        text: Function 'listChannelRequestToMap' has too many statements
+      - linters:
+          - gocognit
+        path: pkg/channel/list.go
+        text: cognitive complexity \d+ of func \`listChannelRequestToMap\` is high
+      - linters:
+          - gocyclo
+        path: pkg/channel/list.go
+        text: cyclomatic complexity \d+ of func `listChannelRequestToMap` is high
+      - linters:
+          - cyclop
+        path: pkg/channel/list.go
+        text: calculated cyclomatic complexity for function listChannelRequestToMap
+      - linters:
+          - tagliatelle
+        path: pkg/channel/typing.go
+        text: got 'user_ids' want 'user_i_ds'
+      - linters:
+          - tagliatelle
+        path: pkg/message/migrate_messages.go
+        text: got 'mentioned_user_ids' want 'mention_user_i_ds'
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
+formatters:
+  enable:
+    - gci
+    - gofmt
+    - gofumpt
+    - goimports
+  exclusions:
+    generated: lax
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
