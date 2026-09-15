@@ -79,13 +79,14 @@ func (smr *MigrateMessagesRequest) Validate() error {
 // MigrateMessages migrates messages to a channel.
 // See https://sendbird.com/docs/chat/platform-api/v3/message/migration/migrate-messages
 func (m *message) MigrateMessages(ctx context.Context, channelURL string, migrateMessagesRequest MigrateMessagesRequest) error {
-	if err := migrateMessagesRequest.Validate(); err != nil {
+	err := migrateMessagesRequest.Validate()
+	if err != nil {
 		return fmt.Errorf("failed to validate migrate messages request: %w", err)
 	}
 
 	path := "/migration/" + channelURL
 
-	_, err := m.client.Post(ctx, path, migrateMessagesRequest, nil)
+	_, err = m.client.Post(ctx, path, migrateMessagesRequest, nil)
 	if err != nil {
 		return fmt.Errorf("failed to migrate messages: %w", err)
 	}

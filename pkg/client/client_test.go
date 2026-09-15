@@ -47,13 +47,13 @@ func TestDo(t *testing.T) {
 	}{
 		{
 			name:            "default",
-			req:             httptest.NewRequest(http.MethodGet, "http://example.com/foo/bar", nil),
+			req:             httptest.NewRequestWithContext(t.Context(), http.MethodGet, "http://example.com/foo/bar", nil),
 			expectedPath:    "/foo/bar",
 			expectedRespFoo: assert.False,
 		},
 		{
 			name:            "with body",
-			req:             httptest.NewRequest(http.MethodGet, "http://example.com/foo/bar", nil),
+			req:             httptest.NewRequestWithContext(t.Context(), http.MethodGet, "http://example.com/foo/bar", nil),
 			expectedPath:    "/foo/bar",
 			body:            Foo{Foo: "bar"},
 			expectedBody:    `{"foo":"bar"}`,
@@ -61,7 +61,7 @@ func TestDo(t *testing.T) {
 		},
 		{
 			name:            "with API error",
-			req:             httptest.NewRequest(http.MethodGet, "http://example.com/foo/bar", nil),
+			req:             httptest.NewRequestWithContext(t.Context(), http.MethodGet, "http://example.com/foo/bar", nil),
 			statusCode:      http.StatusTeapot,
 			expectedPath:    "/foo/bar",
 			responseBody:    Error{Code: 418, Message: "I'm a teapot", Error: true},
@@ -70,7 +70,7 @@ func TestDo(t *testing.T) {
 		},
 		{
 			name:            "with API response",
-			req:             httptest.NewRequest(http.MethodGet, "http://example.com/foo/bar", nil),
+			req:             httptest.NewRequestWithContext(t.Context(), http.MethodGet, "http://example.com/foo/bar", nil),
 			statusCode:      http.StatusOK,
 			expectedPath:    "/foo/bar",
 			responseBody:    Foo{Foo: "bar"},
@@ -79,7 +79,7 @@ func TestDo(t *testing.T) {
 		},
 		{
 			name:         "with optionnal fields",
-			req:          httptest.NewRequest(http.MethodGet, "http://example.com/foo/bar", nil),
+			req:          httptest.NewRequestWithContext(t.Context(), http.MethodGet, "http://example.com/foo/bar", nil),
 			statusCode:   http.StatusOK,
 			expectedPath: "/foo/bar",
 			responseBody: Foo{
@@ -106,6 +106,7 @@ func TestDo(t *testing.T) {
 
 				if test.expectedBody != "" {
 					defer r.Body.Close()
+
 					body, err := io.ReadAll(r.Body)
 					assert.NoError(t, err)
 					assert.Equal(t, test.expectedBody, string(body))
@@ -296,6 +297,7 @@ func TestGetURL(t *testing.T) {
 			t.Parallel()
 
 			var b bytes.Buffer
+
 			logger := slog.New(slog.NewTextHandler(&b, &slog.HandlerOptions{Level: slog.LevelDebug}))
 
 			c := &client{}
@@ -329,6 +331,7 @@ func TestLeak(t *testing.T) {
 	defer s.Close()
 
 	var err error
+
 	c.baseURL, err = url.Parse(s.URL)
 	require.NoError(t, err)
 

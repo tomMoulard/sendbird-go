@@ -115,7 +115,8 @@ var (
 	}
 )
 
-// https://sendbird.com/docs/chat/platform-api/v3/error-codes#2-error-codes
+// Error is an error returned by the Sendbird API.
+// See https://sendbird.com/docs/chat/platform-api/v3/error-codes#2-error-codes
 type Error struct {
 	Code    int    `json:"code"`
 	Message string `json:"message"`
@@ -124,7 +125,9 @@ type Error struct {
 
 func (c *client) handleError(status int, body io.Reader) error {
 	var handledError Error
-	if err := json.NewDecoder(body).Decode(&handledError); err != nil {
+
+	err := json.NewDecoder(body).Decode(&handledError)
+	if err != nil {
 		b, _ := io.ReadAll(body)
 		c.logger.Warn("failed to decode error", "body", string(b))
 

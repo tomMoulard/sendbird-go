@@ -27,6 +27,7 @@ func TestWithLogger(t *testing.T) {
 	t.Parallel()
 
 	var b bytes.Buffer
+
 	logger := slog.New(slog.NewTextHandler(&b, &slog.HandlerOptions{Level: slog.LevelDebug}))
 
 	client := &client{}
